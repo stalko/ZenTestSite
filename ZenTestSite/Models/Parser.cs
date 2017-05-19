@@ -29,17 +29,17 @@ namespace ZenTestSite.Models
             ListItems = JsonConvert.DeserializeObject<List<ItemsDTO>>(Text);
         }
 
-        protected void SaveToDB()
+        protected async Task SaveToDB()
         {
             var items = ListItems.Select(i => new Items() { Age = i.age, Name = i.name }).ToList();
-            Repository.AddRange(items);
+            await Repository.AddRange(items);
         }
 
         public async Task Execute(string str)
         {
             await GetText(str);
             Processing();
-            SaveToDB();
+            await SaveToDB();
         }
     }
 }

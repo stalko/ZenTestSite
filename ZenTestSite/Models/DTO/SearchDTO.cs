@@ -12,5 +12,9 @@ namespace ZenTestSite.Models.DTO
         [Range(1, 100)]
         [Display(Name = "Age")]
         public int Age { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
     }
 }

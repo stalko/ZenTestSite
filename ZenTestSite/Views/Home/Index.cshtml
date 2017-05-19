@@ -8,13 +8,17 @@
         <div class="panel-body">
 			<h4>Find age</h4>
 			&nbsp;<span id="errmsg"></span>
-            <div class="form-inline">
-              <div class="form-group">
-                <input type="number" id="ageNumber" min="0" step="1">
-              </div>
-              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Find</button>
-            </div>
-            <hr/>
-		</div>
+            @using (Html.BeginForm("Find", "Finder", FormMethod.Get))
+            {
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input type="number" id="maxAge" name="maxAge" min="0" step="1">
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Find</button>
+                </div>
+            }
+                
+                <hr />
+</div>
 	</div>
 </div>

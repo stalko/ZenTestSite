@@ -1,0 +1,24 @@
+﻿@model List<ZenTestSite.Models.DTO.SearchDTO>
+@{
+    ViewData["Title"] = "Find";
+}
+
+<div class="container">
+    <table class="table table-striped">
+        <thead class="table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.Label(item.Name)</td>
+                    <td>@Html.Label(item.Age.ToString())</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

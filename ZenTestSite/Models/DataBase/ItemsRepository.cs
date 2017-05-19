@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ZenTestSite.Models.DTO;
 
 namespace ZenTestSite.Models.DataBase
 {
@@ -13,34 +15,16 @@ namespace ZenTestSite.Models.DataBase
         {
             _context = context;
         }
-
-        public IEnumerable<Items> GetAll()
+        public async Task AddRange(List<Items> items)
         {
-            return _context.Items.ToList();
-        }
-
-        public void AddRange(List<Items> items)
-        {
-            _context.Items.AddRange(items);
+            await _context.Items.AddRangeAsync(items);
             _context.SaveChanges();
         }
 
-        public Items Find(long key)
+        public async Task<IEnumerable<SearchDTO>> Find(int maxAge)
         {
-            return _context.Items.FirstOrDefault(t => t.Key == key);
-        }
-
-        public void Remove(long key)
-        {
-            var entity = _context.Items.First(t => t.Key == key);
-            _context.Items.Remove(entity);
-            _context.SaveChanges();
-        }
-
-        public void Update(Items item)
-        {
-            _context.Items.Update(item);
-            _context.SaveChanges();
+            return await _context.Items.Where(i => maxAge >= i.Age)
+                .Select(i => new SearchDTO() { Age = i.Age, Name = i.Name }).ToListAsync();
         }
     }
 }
