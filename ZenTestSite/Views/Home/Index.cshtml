@@ -3,11 +3,11 @@
 }
 
 <div class="container">
-	<div class="panel panel-default">
+    <div class="panel panel-default">
         <div class="panel-heading"><strong>Age</strong></div>
         <div class="panel-body">
-			<h4>Find age</h4>
-			&nbsp;<span id="errmsg"></span>
+            <h4>Find people</h4>
+            &nbsp;<span id="errmsg"></span>
             @using (Html.BeginForm("Find", "Finder", FormMethod.Get))
             {
                 <div class="form-inline">
@@ -17,8 +17,7 @@
                     <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Find</button>
                 </div>
             }
-                
-                <hr />
-</div>
-	</div>
+            <hr />
+        </div>
+    </div>
 </div>
