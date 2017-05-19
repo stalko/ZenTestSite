@@ -12,9 +12,6 @@ namespace ZenTestSite.Models.DataBase
         public ItemsRepository(ItemsContext context)
         {
             _context = context;
-
-            if (_context.Items.Count() == 0)
-                Add(new Items { Name = "Item1" });
         }
 
         public IEnumerable<Items> GetAll()
@@ -22,9 +19,9 @@ namespace ZenTestSite.Models.DataBase
             return _context.Items.ToList();
         }
 
-        public void Add(Items item)
+        public void AddRange(List<Items> items)
         {
-            _context.Items.Add(item);
+            _context.Items.AddRange(items);
             _context.SaveChanges();
         }
 

@@ -19,9 +19,9 @@ namespace ZenTestSite.Models.DTO
     public class UploaderUrlDTO
     {
         [Required]
-        [Display(Name = "URL")]
+        [Display(Name = "Url")]
         [DataType(DataType.Url)]
-        public DateTime Url { get; set; }
+        public string Url { get; set; }
     }
 
     public class UploaderFileDTO

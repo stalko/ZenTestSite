@@ -5,36 +5,39 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ZenTestSite.Models.DTO;
 using ZenTestSite.Models.DataBase;
+using ZenTestSite.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ZenTestSite.Controllers
 {
-    public class UploaderController : Controller
+    public class UploaderController : BaseController
     {
-        private readonly IItemsRepository _todoRepository;
-
-        public UploaderController(IItemsRepository todoRepository)
+        public UploaderController(IItemsRepository itemsRepository) : base(itemsRepository)
         {
-            _todoRepository = todoRepository;
+
         }
 
         [HttpPost]
-        public IActionResult FromUrl([FromBody]UploaderUrlDTO data)
+        public async Task<IActionResult> FromUrl([FromBody]UploaderUrlDTO data)
         {
-            return View();
+            UrlParser parser = new UrlParser(_itemsRepository);
+            await parser.Execute(data.Url);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
-        public IActionResult FromText([FromBody]UploaderTextDTO data)
+        public async Task<IActionResult> FromText([FromBody]UploaderTextDTO data)
         {
-            return View();
+            Parser parser = new Parser(_itemsRepository);
+            await parser.Execute(data.Text);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
-        public IActionResult FromFile([FromBody]UploaderFileDTO data)
+        public async Task<IActionResult> FromFile([FromBody]UploaderFileDTO data)
         {
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

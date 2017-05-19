@@ -7,7 +7,7 @@ namespace ZenTestSite.Models.DataBase
 {
     public interface IItemsRepository
     {
-        void Add(Items item);
+        void AddRange(List<Items> items);
         IEnumerable<Items> GetAll();
         Items Find(long key);
         void Remove(long key);

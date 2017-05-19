@@ -9,6 +9,6 @@ namespace ZenTestSite.Models.DataBase
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Key { get; set; }
         public string Name { get; set; }
-        public bool IsComplete { get; set; }
+        public int Age { get; set; }
     }
 }
