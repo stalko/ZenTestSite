@@ -10,5 +10,7 @@ namespace ZenTestSite.Models.DataBase
     {
         Task AddRange(List<Items> items);
         Task<IEnumerable<SearchDTO>> Find(int maxAge);
+        Task<IEnumerable<SearchDTO>> All();
+        
     }
 }

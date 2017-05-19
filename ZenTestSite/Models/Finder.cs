@@ -20,5 +20,9 @@ namespace ZenTestSite.Models
         {
             return await Repository.Find(maxAge);
         }
+        public async Task<IEnumerable<SearchDTO>> All()
+        {
+            return await Repository.All();
+        }
     }
 }

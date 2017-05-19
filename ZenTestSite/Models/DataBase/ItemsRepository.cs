@@ -26,5 +26,11 @@ namespace ZenTestSite.Models.DataBase
             return await _context.Items.Where(i => maxAge >= i.Age)
                 .Select(i => new SearchDTO() { Age = i.Age, Name = i.Name }).ToListAsync();
         }
+
+        public async Task<IEnumerable<SearchDTO>> All()
+        {
+            return await _context.Items
+                .Select(i => new SearchDTO() { Age = i.Age, Name = i.Name }).ToListAsync();
+        }
     }
 }

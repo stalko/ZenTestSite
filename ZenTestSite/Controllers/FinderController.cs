@@ -23,7 +23,17 @@ namespace ZenTestSite.Controllers
         {
             var finder = new Finder(_itemsRepository);
             var people = await finder.FindPeople(maxAge);
-            return View(people);
+            ViewData["Title"] = "Find";
+            return View("Table",people);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> All()
+        {
+            var finder = new Finder(_itemsRepository);
+            var people = await finder.All();
+            ViewData["Title"] = "All Data";
+            return View("Table", people);
         }
     }
 }
