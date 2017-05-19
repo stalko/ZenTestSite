@@ -3,34 +3,35 @@
 }
 
 <div class="container">
-      <div class="panel panel-default">
+    <div class="panel panel-default">
         <div class="panel-heading"><strong>Upload</strong></div>
         <div class="panel-body">
             <!-- Url Form -->
             <h4>Write url</h4>
-			<div class="form-horizontal">
-            <input name="Url" id="js-upload-files" style="width: 70%;max-width: 100%;">
-            <input type="submit" class="btn btn-sm btn-primary" id="js-upload-submit" style="width: 20%;" onclick="FromUrl()">
-			</div>
-            <hr/>
-			
-			<!-- TextBox Form -->
-            <h4>Write text</h4>
-                <textarea name="Text" style="max-width:100%;width:100%;height:200px;"></textarea>
-			    <br/>
-                <input type="submit" class="btn btn-sm btn-primary" id="js-upload-submit" onclick="FromText()">
-            <hr/>
+            <div class="form-horizontal">
+                <input name="Url" id="js-upload-files" style="width: 70%;max-width: 100%;">
+                <input type="submit" class="btn btn-sm btn-primary" id="js-upload-submit" style="width: 20%;" onclick="FromUrl()">
+            </div>
+            <hr />
 
-			<!-- Standar Form -->
-			<h4>Select file</h4>
-			<form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-				<div class="form-inline">
-				  <div class="form-group">
-				    <input type="file" name="file" id="js-upload-files">
-				  </div>
-				  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Processing file</button>
-				</div>
-			</form>
+            <!-- TextBox Form -->
+            <h4>Write text</h4>
+            <textarea name="Text" style="max-width:100%;width:100%;height:200px;"></textarea>
+            <br />
+            <input type="submit" class="btn btn-sm btn-primary" id="js-upload-submit" onclick="FromText()">
+            <hr />
+
+            <!-- Standar Form -->
+            <h4>Select file</h4>
+
+            <div class="form-inline">
+                <form asp-controller="Uploader" asp-action="FromFile" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="File" id="js-upload-files">
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Processing file</button>
+                </form>
+            </div>
         </div>
-      </div>
-    </div> <!-- /container -->
+    </div>
+</div> <!-- /container -->
